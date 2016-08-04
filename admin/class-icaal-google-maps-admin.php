@@ -129,6 +129,22 @@ class Icaal_Google_Maps_Admin {
 			<div class="welcome-panel is-dismissible">
 				<h3 style="margin-top:0">How to Get an API Key</h3>
 				<p class="message">You can get an API Key buy following <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">this guide</a>. If you are using the directions map you will need to enable the Google Maps Directions API within the Google Developers Console.</p>
+				<h3>Placing the Map Using Shortcodes</h3>
+				<p class="message">You can embed the Google Map using a shortcode either in the standard WordPress editor or in the <a href="https://developer.wordpress.org/reference/functions/do_shortcode/" target="_blank">theme template file.</a></p>
+				<table class="form-table">
+					<tr>
+						<th>Standard Map Shortcode</th>
+						<td>
+							<input type="text" class="regular-text" name="directions-map" value="<?php echo esc_attr('[icaal_google_map lat="50.9097525" lng="-1.4241363" address="Equity Court, 73-75 Millbrook Rd E, Southampton SO15 1RJ"]') ?>" readonly> 
+						</td>
+					</tr>
+					<tr>
+						<th>Directions Map Shortcode</th>
+						<td>
+							<input type="text" class="regular-text" name="directions-map" value="<?php echo esc_attr('[icaal_google_map type="directions" lat="50.9097525" lng="-1.4241363" address="Equity Court, 73-75 Millbrook Rd E, Southampton SO15 1RJ"]') ?>" readonly> 
+						</td>
+					</tr>
+				</table>
 			</div>
 	  	<form method="post" action="<?php echo get_admin_url( '', 'options.php' ) ?>">
   			<?php settings_fields( $this->plugin_name ); ?>
