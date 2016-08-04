@@ -16,7 +16,7 @@ Embed different types of Google Maps into your website using shortcodes.
 1. Upload the `icaal-google-maps` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. [Generate an API Key](https://developers.google.com/maps/documentation/javascript/get-api-key)
-4. Configuure the plugin in the WordPress dashboard by going to Settings » Google Maps
+4. Configure the plugin in the WordPress dashboard by going to Settings » Google Maps
 
 ## Changelog
 
