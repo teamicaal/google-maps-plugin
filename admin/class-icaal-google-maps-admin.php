@@ -160,6 +160,9 @@ class Icaal_Google_Maps_Admin {
   public function register_settings() {
 
   	register_setting( $this->plugin_name, $this->plugin_name . '_google_api_key' );
+  	register_setting( $this->plugin_name, $this->plugin_name . '_google_map_marker' );
+  	register_setting( $this->plugin_name, $this->plugin_name . '_google_map_marker_start' );
+  	register_setting( $this->plugin_name, $this->plugin_name . '_google_map_marker_end' );
 
   }
 
@@ -190,7 +193,27 @@ class Icaal_Google_Maps_Admin {
   			<table class="form-table">
   				<tr>
   					<th>Google API Key</th>
-  					<td><input type="text" class="regular-text" name="<?php echo $this->plugin_name . '_google_api_key' ?>" value="<?php echo esc_attr( get_option($this->plugin_name . '_google_api_key') ); ?>"></td>
+  					<td>
+	  					<input type="text" class="regular-text" name="<?php echo $this->plugin_name . '_google_api_key' ?>" value="<?php echo esc_attr( get_option($this->plugin_name . '_google_api_key') ); ?>">
+	  				</td>
+  				</tr>
+  				<tr>
+  					<th>Map Marker URL</th>
+  					<td>
+	  					<input type="text" class="regular-text" name="<?php echo $this->plugin_name . '_google_map_marker' ?>" value="<?php echo esc_attr( get_option($this->plugin_name . '_google_map_marker') ); ?>">
+  					</td>
+  				</tr>
+  				<tr>
+  					<th>Map Marker Start URL</th>
+  					<td>
+	  					<input type="text" class="regular-text" name="<?php echo $this->plugin_name . '_google_map_marker_start' ?>" value="<?php echo esc_attr( get_option($this->plugin_name . '_google_map_marker_start') ); ?>">
+  					</td>
+  				</tr>
+  				<tr>
+  					<th>Map Marker End URL</th>
+  					<td>
+	  					<input type="text" class="regular-text" name="<?php echo $this->plugin_name . '_google_map_marker_end' ?>" value="<?php echo esc_attr( get_option($this->plugin_name . '_google_map_marker_end') ); ?>">
+  					</td>
   				</tr>
   			</table>
   			<?php submit_button(); ?>
