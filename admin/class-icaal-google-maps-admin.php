@@ -114,7 +114,7 @@ class Icaal_Google_Maps_Admin {
       'name_admin_bar'        => 'Google Map',
       'archives'              => 'Google Map Archives',
       'parent_item_colon'     => 'Parent Google Map:',
-      'all_items'             => 'All Google Maps',
+      'all_items'             => 'Google Maps',
       'add_new_item'          => 'Add New Google Map',
       'add_new'               => 'Add New',
       'new_item'              => 'New Google Map',
@@ -155,6 +155,48 @@ class Icaal_Google_Maps_Admin {
     );
     register_post_type( 'icaal_google_map', $args );
 
+  }
+
+  public function register_settings() {
+
+  	register_setting( $this->plugin_name, $this->plugin_name . '_google_api_key' );
+
+  }
+
+  public function global_settings_menu() {
+
+  	add_submenu_page(
+  		'edit.php?post_type=icaal_google_map',
+  		'Google Maps Settings',
+  		'Settings',
+  		'manage_options',
+  		'settings',
+  		array( $this, 'global_settings_page' )
+  	);
+
+  }
+
+  public function global_settings_page() {
+  	?>
+  	<div class="wrap">
+	  	<h1>Google Maps Settings</h1>
+			<div class="welcome-panel is-dismissible">
+				<h3 style="margin-top:0">How to Get an API Key</h3>
+				<p class="message">You can get an API Key buy following <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">this guide</a>. If you are using the directions map you will need to enable the Google Maps Directions API within the Google Developers Console.</p>
+			</div>
+	  	<form method="post" action="<?php echo get_admin_url( '', 'options.php' ) ?>">
+  			<?php settings_fields( $this->plugin_name ); ?>
+  			<?php do_settings_sections( $this->plugin_name ); ?>
+  			<table class="form-table">
+  				<tr>
+  					<th>Google API Key</th>
+  					<td><input type="text" class="regular-text" name="<?php echo $this->plugin_name . '_google_api_key' ?>" value="<?php echo esc_attr( get_option($this->plugin_name . '_google_api_key') ); ?>"></td>
+  				</tr>
+  			</table>
+  			<?php submit_button(); ?>
+		  </form>
+	  </div>
+  	<?php
   }
 
 }
