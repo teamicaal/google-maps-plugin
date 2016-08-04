@@ -100,4 +100,23 @@ class Icaal_Google_Maps_Public {
 
 	}
 
+	public function register_shortcodes() {
+		function icaal_google_map_shortcode( $atts ) {
+
+			extract(shortcode_atts(
+				array(
+					'type' => 'standard',
+					'lat' => '50.9097525',
+					'lng' => '-1.4241363',
+					'address' => 'Equity Court, 73-75 Millbrook Rd E, Southampton SO15 1RJ'
+				),
+				$atts )
+			);
+
+			return $type;
+
+		}
+		add_shortcode( 'icaal_google_map', 'icaal_google_map_shortcode' );
+	}
+
 }
