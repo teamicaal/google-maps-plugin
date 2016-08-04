@@ -157,7 +157,7 @@ class Icaal_Google_Maps_Admin {
 
   }
 
-  public function register_settings() {
+  public function register_global_settings() {
 
   	register_setting( $this->plugin_name, $this->plugin_name . '_google_api_key' );
   	register_setting( $this->plugin_name, $this->plugin_name . '_google_map_marker' );
