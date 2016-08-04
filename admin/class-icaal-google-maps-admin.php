@@ -100,63 +100,6 @@ class Icaal_Google_Maps_Admin {
 
 	}
 
-	/**
-	 * Register the Google Map Post Type
-	 *
-	 * @since    1.0.0
-	 */
-  public function register_post_type() {
-
-    $labels = array(
-      'name'                  => 'Google Maps',
-      'singular_name'         => 'Google Map',
-      'menu_name'             => 'Google Maps',
-      'name_admin_bar'        => 'Google Map',
-      'archives'              => 'Google Map Archives',
-      'parent_item_colon'     => 'Parent Google Map:',
-      'all_items'             => 'Google Maps',
-      'add_new_item'          => 'Add New Google Map',
-      'add_new'               => 'Add New',
-      'new_item'              => 'New Google Map',
-      'edit_item'             => 'Edit Google Map',
-      'update_item'           => 'Update Google Map',
-      'view_item'             => 'View Google Map',
-      'search_items'          => 'Search Google Map',
-      'not_found'             => 'Not found',
-      'not_found_in_trash'    => 'Not found in Trash',
-      'featured_image'        => 'Featured Image',
-      'set_featured_image'    => 'Set featured image',
-      'remove_featured_image' => 'Remove featured image',
-      'use_featured_image'    => 'Use as featured image',
-      'insert_into_item'      => 'Insert into item',
-      'uploaded_to_this_item' => 'Uploaded to this item',
-      'items_list'            => 'Items list',
-      'items_list_navigation' => 'Items list navigation',
-      'filter_items_list'     => 'Filter items list',
-    );
-    $args = array(
-      'label'                 => 'Google Map',
-      'labels'                => $labels,
-      'supports'              => array( 'title', ),
-      'hierarchical'          => false,
-      'public'                => false,
-      'show_ui'               => true,
-      'show_in_menu'          => true,
-      'menu_position'         => 80,
-      'menu_icon'             => 'dashicons-location-alt',
-      'show_in_admin_bar'     => false,
-      'show_in_nav_menus'     => false,
-      'can_export'            => true,
-      'has_archive'           => true,    
-      'exclude_from_search'   => false,
-      'publicly_queryable'    => false,
-      'rewrite'               => false,
-      'capability_type'       => 'page',
-    );
-    register_post_type( 'icaal_google_map', $args );
-
-  }
-
   public function register_global_settings() {
 
   	register_setting( $this->plugin_name, $this->plugin_name . '_google_api_key' );
@@ -169,9 +112,9 @@ class Icaal_Google_Maps_Admin {
   public function global_settings_menu() {
 
   	add_submenu_page(
-  		'edit.php?post_type=icaal_google_map',
+  		'options-general.php',
   		'Google Maps Settings',
-  		'Settings',
+  		'ICAAL Google Maps',
   		'manage_options',
   		'settings',
   		array( $this, 'global_settings_page' )
