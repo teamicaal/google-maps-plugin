@@ -156,7 +156,6 @@ class Icaal_Google_Maps {
 		$this->loader->add_action( 'init', $plugin_admin, 'register_post_type' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_settings' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'global_settings_menu' );
-		$this->loader->add_action( 'admin_notices', $plugin_admin, 'admin_notice' );
 
 	}
 
