@@ -112,13 +112,13 @@
       });
     }
 
-    function directionsError( message ) {
-
-      $('#directions-map-form-<?php echo $id ?>').find('.response').html('<div class="alert alert-danger">' + message + '</div>');
-      
-    }
-
     jQuery(document).ready(function($) {
+
+      function directionsError( message ) {
+
+        $('#directions-map-form-<?php echo $id ?>').find('.response').html('<div class="alert alert-danger">' + message + '</div>');
+        
+      }
 
       $('#directions-map-form-<?php echo $id ?>').submit(function(e) {
 
