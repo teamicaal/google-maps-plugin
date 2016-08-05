@@ -1,3 +1,8 @@
+<?php
+
+  $marker = get_option('icaal-google-maps_google_map_marker');
+
+?>
 <div id="map-<?php echo $id ?>" class="map-container">
 </div>
 <script type="text/javascript">
@@ -19,6 +24,7 @@
 
     marker = new google.maps.Marker({
       position: latlng,
+      icon: '<?php echo $marker ?>',
       map: map
     });
 
