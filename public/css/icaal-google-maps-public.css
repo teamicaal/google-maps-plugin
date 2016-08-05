@@ -2,3 +2,125 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+.gm-style-cc {
+  display: none;
+}
+
+.map-container {
+  width: 100%;
+  height: 300px;
+}
+
+@media (min-height: 768px) {
+  .map-container {
+    height: 600px;
+  }
+}
+
+.directions-map-container {
+  position: relative;
+}
+
+.directions-map-panel {
+  -webkit-transition: all ease .5s;
+  transition: all ease .5s;
+}
+
+.directions-map-panel.active .directions-map-form {
+  display: none;
+}
+.directions-map-panel.active .directions-map-results {
+  display: block;
+}
+
+.directions-map-form {
+  padding: 1rem;
+  text-align: center;
+}
+
+.directions-map-title,
+.directions-map-input,
+.alert {
+  margin: 0 0 1rem;
+}
+
+.directions-map-input {
+  text-transform: uppercase;
+}
+
+.directions-map-input::-webkit-input-placeholder {
+  text-transform: none;
+}
+
+.directions-map-input::-moz-placeholder {
+  text-transform: none;
+}
+
+.directions-map-input:-ms-input-placeholder {
+  text-transform: none;
+}
+
+.directions-map-input::placeholder {
+  text-transform: none;
+}
+
+.alert-danger {
+  color: red;
+}
+
+.directions-map-results {
+  display: none;
+}
+
+.directions-map-results__origin,
+.directions-map-results__destination,
+.directions-map-results__info,
+.directions-map-results__steps .step {
+  padding: 1rem;
+}
+
+.directions-map-results__info {
+  background-color: #d9edf7;
+  text-align: center;
+}
+
+.directions-map-results__destination,
+.directions-map-results__steps .step:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+@media (min-width: 768px) and (min-height: 400px) {
+  .directions-map-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-360px, -50%);
+            transform: translate(-360px, -50%);
+    z-index: 5;
+    max-width: 360px;
+    max-height: 500px;
+    overflow: scroll;
+    background-color: #fff;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.25);
+  }
+  .directions-map-panel.active {
+    left: 0;
+    -webkit-transform: translate(36px, -50%);
+            transform: translate(36px, -50%);
+  }
+}
+
+@media (min-width: 992px) and (min-height: 400px) {
+  .directions-map-panel {
+    -webkit-transform: translate(-485px, -50%);
+            transform: translate(-485px, -50%);
+  }
+}
+
+@media (min-width: 1200px) and (min-height: 400px) {
+  .directions-map-panel {
+    -webkit-transform: translate(-570px, -50%);
+            transform: translate(-570px, -50%);
+  }
+}

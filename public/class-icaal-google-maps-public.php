@@ -96,7 +96,72 @@ class Icaal_Google_Maps_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/icaal-google-maps-public.js', array( 'jquery' ), $this->version, false );
+		// wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/icaal-google-maps-public.js', array( 'jquery' ), $this->version, false );
+
+	}
+
+	public function register_shortcodes() {
+		function icaal_google_map_shortcode( $atts ) {
+
+			$api_key = get_option('icaal-google-maps_google_api_key');
+			wp_enqueue_script( 'google-maps', 'https://maps.googleapis.com/maps/api/js?key=' . $api_key . '&callback=initMap', '', '', true );
+
+			$id = wp_rand();
+
+			extract(shortcode_atts(
+				array(
+					'type' => 'standard',
+					'lat' => '50.9097525',
+					'lng' => '-1.4241363',
+					'address' => 'Equity Court, 73-75 Millbrook Rd E, Southampton SO15 1RJ',
+					'zoom' => 14,
+					'title' => 'Enter Your Address To Get Directions!'
+				),
+				$atts )
+			);
+
+			ob_start();
+			include plugin_dir_path( __FILE__ ) . 'partials/icaal-google-maps-' . $type . '.php';
+			$content = ob_get_contents();
+			ob_end_clean();
+			return $content;
+
+		}
+		add_shortcode( 'icaal_google_map', 'icaal_google_map_shortcode' );
+	}
+
+	public function icaal_google_maps_directions() {
+
+    $api_key = get_option('icaal-google-maps_google_api_key');
+
+    if( check_ajax_referer( 'icaal_google_maps', '_wpnonce' ) ) {
+
+      $origin_address = $_POST['origin'];
+      $destination_address = $_POST['destination'];
+      $destination_lat = $_POST['destination_lat'];
+      $destination_lng = $_POST['destination_lng'];
+
+      $args = http_build_query(
+        array(
+          'key' => $api_key,
+          'origin' => $origin_address,
+          'destination' => $destination_lat . ',' . $destination_lng,
+          'language' => 'en-GB',
+          'units' => 'imperial'
+        )
+      );
+      $url = 'https://maps.googleapis.com/maps/api/directions/json?' . $args;
+      $args = array( 'timeout' => 120 );
+      $data_feed = wp_remote_get( $url, $args );
+      $data = json_decode( $data_feed['body'], true );
+
+      wp_send_json_success($data);
+
+    } else {
+
+    	wp_send_json_error('Could Not Complete Your Request at This Time');
+
+    }
 
 	}
 
