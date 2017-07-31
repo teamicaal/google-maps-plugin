@@ -25,6 +25,10 @@
 .directions-map-panel {
   -webkit-transition: all ease .5s;
   transition: all ease .5s;
+  overflow: hidden;
+}
+.directions-map-panel.active{
+  overflow: scroll;
 }
 
 .directions-map-panel.active .directions-map-form {
